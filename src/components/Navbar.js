@@ -22,11 +22,12 @@ export default class Navbar extends Component {
 							type='button'
 							className='nav-btn'
 							onClick={this.handleToggle}
-						></button>
+						>
 						<FaAlignRight className='nav-icon' />
+                        </button>
 					</div>
 					<ul
-						className={this.state.isOpen ? "nav-links show-nav" : 'nav-links'}
+						className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
 					>
 						<li>
 							<Link to="/">Home</Link>
