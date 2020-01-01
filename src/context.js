@@ -33,6 +33,7 @@ class RoomProvider extends Component {
 			<RoomContext.Provider value={{ ...this.state }}>
 				{this.props.children}
 			</RoomContext.Provider>
+            
 		);
 	}
 }
