@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { RoomContext } from '../context';
-import StyledHero from '../components/StyledHero'
+import StyledHero from '../components/StyledHero';
 
 export default class SingleRoom extends Component {
 	constructor(props) {
@@ -34,30 +34,42 @@ export default class SingleRoom extends Component {
 			name,
 			description,
 			capacity,
-			size,  
+			size,
 			price,
 			extras,
 			breakfast,
 			pets,
 			images
 		} = room;
+		const [mainImg, ...defaultImg] = images;
 		return (
 			<>
-			<StyledHero image={images[0] || this.state.defaultBcg}>
-				<Banner title={`${name} room`}>
-					<Link to='/rooms' className='btn-primary'>
-						back to rooms
-					</Link>
-				</Banner>
-			</StyledHero>
-			<section className="single-room">
-			<div className="single-room-images">
-			{images.map((item,index)=>{
-				return <img key={index} src={item} alt={name}/>
-			})}
-			</div>
-
-			</section>
+				<StyledHero image={mainImg || this.state.defaultBcg}>
+					<Banner title={`${name} room`}>
+						<Link to='/rooms' className='btn-primary'>
+							back to rooms
+						</Link>
+					</Banner>
+				</StyledHero>
+				<section className='single-room'>
+					<div className='single-room-images'>
+						{defaultImg.map((item, index) => {
+							return <img key={index} src={item} alt={name} />;
+						})}
+					</div>
+					<div className='single-room-info'>
+						<article className='desc'>
+							<h3>details</h3>
+							<p>{description}</p>
+						</article>
+						<article className="info">
+						<h3>info</h3>
+						<h6>price : ${price}</h6>
+						<h6>size : ${size} SQFT</h6>
+						<h6> max capacity : {capacity>1 ? `${capacity} people` : `${capacity} person`}</h6>
+						</article>
+					</div>
+				</section>
 			</>
 		);
 	}
