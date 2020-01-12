@@ -70,6 +70,7 @@ export default class SingleRoom extends Component {
 						</article>
 					</div>
 				</section>
+				
 			</>
 		);
 	}
