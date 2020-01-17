@@ -3,7 +3,11 @@ import { useContext } from 'react';
 import { RoomContext } from '../context';
 import Title from '../components/Title';
 
-export default function RoomFilter() {
+const getUnique = (items, value) => {
+    return [...new Set(items.map(item => item[value]))]
+}
+
+export default function RoomFilter({rooms}) {
 	const context = useContext(RoomContext);
 	const {
 		handleChange,
@@ -16,7 +20,15 @@ export default function RoomFilter() {
 		maxSize,
 		breakfast,
 		pets
-	} = context;
+    } = context;
+    // get unique types
+let types = getUnique(rooms,'type');
+// add all
+types = ['all', ...types];
+// map to jsx
+types = types.map((item,index)=>{
+    return <option value={item} key={index}>{item}</option>
+})
 
 	return (
 		<section className='filter-container'>
@@ -25,7 +37,14 @@ export default function RoomFilter() {
 				{/*  */}
 				<div className='form-group'>
 					<label htmlFor='type'>room type</label>
-					<select name='type' id='type'></select>
+					<select
+						name='type'
+						id='type'
+						value={type}
+						className='form-control'
+						onChange={handleChange}
+					>
+                    {types}</select>
 				</div>
 				{/*  */}
 			</form>
