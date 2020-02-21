@@ -41,6 +41,7 @@ export default function RoomFilter({ rooms }) {
 				{item}
 			</option>
 		);
+		
 	});
 
 	return (
@@ -142,3 +143,4 @@ export default function RoomFilter({ rooms }) {
 		</section>
 	);
 }
+
